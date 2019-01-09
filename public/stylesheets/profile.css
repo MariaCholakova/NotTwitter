@@ -1,0 +1,597 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    background: rgba(80, 169, 221, 0.1);
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+
+#profile-page-main{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    /* margin-top: 3.8%; */
+    font-family: 'Noto Sans';
+    background-color: unset;
+}
+
+/* PROFILE HEADER */
+    /* wallpaper */
+#profile-page-header{
+    width: 100%;
+    height: 350px;
+}
+
+#profile-page-header-banner-container{
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    border-bottom: 1px solid gray
+}
+
+#profile-page-header-banner{
+    width: 100%;
+}
+
+    /* navigation */
+
+#profile-page-header-nav-container{
+    width: 100%;
+    height: 52px;
+    background-color: rgb(29, 163, 242);
+    color: white;
+    border-bottom: 1px solid gray;
+}
+
+#profile-page-profile-picture-nav-container{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: 190px;
+    left: 7%;
+    object-fit: cover
+}
+
+#profile-page-profile-picture-nav{
+    height: 100%;
+    width: 100%;
+    border: 5px solid white;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+#profile-page-header-nav{
+    margin-left: 30%;
+    display: inline-block;
+    width: 55%;
+    vertical-align: middle;
+    font-size: 0.9em;
+    height: 100%;
+}
+
+#profile-page-header-nav>li{
+    display: inline-block;
+    height: 100%;
+    padding: 0.5em 2em;
+    vertical-align: middle;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    height: 100%;
+
+}
+
+
+.profile-page-nav-numbers{
+    font-size: 1.3em;
+}
+
+#profile-page-header-nav>li:hover{
+    border-bottom: 3px solid rgb(3, 110, 174);
+}
+
+#profile-page-header-nav>li:hover .profile-page-nav-numbers{
+    color: rgb(3, 110, 174);
+}
+
+.profile-page-nav-button{
+    all:unset;
+    display: inline-block;
+    float: right;
+    color: white;
+    background-color: rgb(29, 163, 242);
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-top: 0.8%;
+    margin-right: 2%;
+}
+
+.profile-page-nav-button:hover{
+    color:rgb(29, 163, 242);
+    background-color: white;
+}
+
+/* INNER CONTENT */
+
+#profile-page-inner-content-div{
+    margin-top: 3%;
+}
+
+    /* LEFT ASIDE */
+
+#profile-pg-left-aside{
+    display: inline-block;
+    float:left;
+    color: rgba(7, 152, 238, 0.5);
+    font-size: 0.85em;
+}
+
+        /* USER DETAILS */
+
+#profile-pg-user-details{
+    width: 100%;
+    margin-bottom: 3%;
+    text-align: left;
+}
+
+#profile-pg-user-details>p, #profile-pg-user-details>div{
+    margin-bottom: 2.5%;
+}
+
+#profile-pg-user-details-name {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: rgb(3, 110, 174);
+}
+
+#profile-pg-user-details-bio {
+    color: rgb(3, 110, 174);   
+}
+
+#profile-pg-user-details-web{
+    all:unset;
+    cursor: pointer;
+}
+
+.profile-details-icon{
+    width: 6%;
+    vertical-align: middle;
+}
+
+        /* USER GALLERY */
+
+#profile-page-user-gallery-container{
+    text-align: left;
+    width: 100%;
+}
+
+#profile-pg-user-gallery{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.profile-pg-gallery-pic-container{
+    width: 83px;
+    height: 83px;
+    float: left;
+    object-fit: cover;
+    padding: 0.2em;
+
+}
+
+.profile-pg-gallery-pic{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* RIGHT ASIDE DETAILS */
+.who-to-follow-a{
+    object-fit: cover;
+}
+
+.who-to-follow-img{
+    object-fit: cover;
+}
+
+#profile-trends-dir > #trendsDiv{
+    margin-top: 10%;
+}
+
+/* DYNAMIC CONTENT CONTAINER */
+#profile-page-dynamic-content-container{
+    width: 70%;
+    float: right;
+}
+
+/* FOLLOWING CONTENT and FOLLOWED*/
+
+#profile-page-main-div-following, #profile-page-main-div-followers{
+    display: inline-block;
+    width: 100%;
+    padding: 0.2em;
+}
+
+.followed-user-container, .follower-container{
+    width: 32%;
+    height: 300px;
+    float: left;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 2%;
+    margin-bottom: 2%;  
+}
+
+.followed-user-container:nth-of-type(3n), .follower-container:nth-of-type(3n){
+    margin-right: 0;
+}
+
+.followed-user-background-container, .follower-background-container{
+    width: 100%;
+    height: 80px;
+    overflow: hidden;    
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.followed-user-background, .follower-background{
+    width: 100%;
+}
+
+.followed-user-profile-pic, .follower-profile-pic{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+    top: -35px;
+    left: 5%;
+}
+
+.followed-user-button, .follower-button{
+    all:unset;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgb(29, 163, 242);
+    color: rgb(29, 163, 242);
+    border-radius: 20px;
+    padding: 0.4em;
+    width: 30%;
+    text-align: center;
+    position: relative;
+    left: 20%;
+    top: -40px;
+    font-weight: bold;
+}
+
+.followed-user-button:hover, .follower-button:hover{
+    background-color: rgb(29, 163, 242);
+    color: white;
+}
+
+
+.followed-user-details, .follower-details{
+    position: relative;
+    top: -20px;
+    left: 0;
+    padding: 0 1em;
+    color: rgb(3, 110, 174);
+}
+
+.followed-user-name, .follower-name{
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.followed-user-username, .follower-username{
+    all:unset;
+    color: rgba(7, 152, 238, 0.5);
+    font-size: 0.9em;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.followed-user-username:hover, .follower-username:hover{
+    color: rgb(29, 163, 242);
+}
+
+.followed-user-bio, .follower-bio{
+    font-size: 0.8em;
+    margin-top: 3%;
+}
+
+/* MAIN */
+
+#profile-page-main-div-tweets-inner, #profile-page-main-div-likes-inner{
+    width: 63%;
+}
+
+#profile-page-right-aside-likes, #profile-page-right-aside-tweets{
+    width: 34%
+}
+
+/* RESPONSEIVE */
+@media only screen and (max-width: 1171px){
+    #profile-page-right-aside-tweets,
+    #profile-page-right-aside-likes
+    {
+        display:none;
+    }
+
+    #profile-page-main-div-tweets-inner{
+     width: 100%;   
+    }
+
+    
+    .followed-user-profile-pic{
+        width: 70px;
+        height: 70px;
+    }
+
+    #profile-page-main-div-following{
+        font-size: 0.9em;
+    }
+
+    .followed-user-button,
+    .follower-button {
+        top: -50px;
+    }
+
+    .followed-user-details,
+    .follower-details {
+        top: -33px;
+    }
+
+    #profile-page-main-div-following{
+        margin-left: 1%;
+    }
+}
+
+@media only screen and (max-width: 950px){
+    #profile-pg-left-aside{
+        width: 24%;
+        margin-left: 3%
+    }
+
+    #profile-page-inner-content-div{
+        width: 95%;
+    }
+
+    #profile-page-dynamic-content-container{
+        float: none;
+        display: inline-block
+    }
+}
+
+@media only screen and (max-width: 853px){
+        
+    #profile-page-header{
+        height: 200px;
+    }
+
+    #profile-page-header-banner-container{
+        height: 200px;
+    }
+
+    #profile-page-header-nav{
+        width: 50%
+    }
+
+    #profile-page-header-nav>li{
+        padding: 0.5em 1.5em
+    }
+
+    #profile-pg-left-aside{
+        margin-top: 9%;
+    }
+
+    #profile-page-inner-content-div{
+        margin-top: 11%;
+    }
+
+    #profile-page-profile-picture-nav-container{
+        height: 150px;
+        width: 150px;
+    }
+
+    .followed-user-container,
+    .follower-container {
+        height: 280px
+    }
+
+    .followed-user-button,
+    .follower-button{
+        font-size: 0.85em;
+    }
+}
+
+@media only screen and (max-width: 737px){
+    #profile-page-profile-picture-nav-container{
+        height: 135px;
+        width: 135px;
+    }
+
+    #profile-page-main-div-tweets-inner>ol{
+        font-size: 0.8em;
+    }
+
+   #profile-pg-left-aside{
+       font-size: 0.7em;
+   }
+   #profile-page-header-nav{
+       margin-left: 26%;
+   }
+   #profile-page-header-nav>li{
+       padding: 0.5em 1em;
+   }
+
+   #rightNav>ul>li:first-of-type{
+    width: 58%;
+  }
+
+  .followed-user-button,
+  .follower-button {
+    left: 10%;
+    font-size: 0.75em;
+    top: -60px;
+  }
+
+  .followed-user-profile-pic,
+  .follower-profile-pic {
+      width: 60px;
+      height: 60px;
+      top: -50px;
+  }
+
+  .followed-user-details,
+  .follower-details{
+    top: -50px;
+  }
+
+  .followed-user-container,
+  .follower-container {
+    height: 260px;
+  }
+}
+
+@media only screen and (max-width: 700px){
+    #profile-page-main-div-following,
+    #profile-page-main-div-followers{
+        font-size: 0.75em;
+    }
+}
+
+@media only screen and (max-width: 640px){
+    #profile-page-profile-picture-nav-container{
+        height: 135px;
+        width: 135px;
+    }
+
+    #profile-page-header{
+        height: 170px;
+    }
+
+    #profile-page-header-banner-container{
+        height: 140px;
+    }
+
+    #profile-page-profile-picture-nav-container{
+        top: 140px;
+        left: 4%;
+    }
+
+    #profile-page-header-nav>li{    
+        width: 24%;
+    }
+
+    #profile-page-profile-picture-nav-container{
+        top: 170px;
+        left: 3%;
+    }
+
+    #profile-pg-left-aside{
+        display: block;
+        width: 100%;
+        margin-top:2%
+    }
+
+    #profile-pg-user-details{
+        width: 50%;
+        float: left;
+        margin-top: 12%;
+    }
+
+    #profile-page-user-gallery-container{
+        width: 50%;
+        float: right;
+        margin-top: 5%
+    }
+
+    #profile-page-main-div-tweets{
+        width: 100%;
+    }
+
+    #profile-page-dynamic-content-container{
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 550px){
+    #profile-page-profile-picture-nav-container{
+        top: 264px;
+        left: 2%
+    }
+
+    #profile-pg-user-details{
+        width: 70%;
+        float: right;
+        margin-top: 0;
+        margin-bottom: 0
+    }
+
+    #profile-page-user-gallery-container{
+        width: 95%;
+        margin-top: 15%;
+    }
+
+    #profile-page-gallery-title{
+        width: 60%;
+    }
+
+    #profile-pg-left-aside{
+        height: auto;
+        widows: 98%;
+    }
+
+    #profile-page-header-nav{
+        margin-left: 4%;
+        width: 66%;
+    }
+
+    #profile-page-main-div-tweets,
+    #profile-page-main-div-following,
+    #profile-page-main-div-followers,
+    #profile-page-main-div-likes{
+        margin-top:15%;
+    }
+
+}
+
+
+
+/*     
+.followed-user-profile-pic{
+    width: 60px;
+    height: 60px;
+}
+
+#profile-page-main-div-following{
+    font-size: 0.7em;
+}
+
+.followed-user-button,
+.follower-button {
+    top: -50px;
+ }
+
+.followed-user-details,
+.follower-details {
+     top: -33px;
+} */

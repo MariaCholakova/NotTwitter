@@ -1,0 +1,130 @@
+<div class='mainContent' id="settings-page-main" ng-controller="settingsController">
+    <aside id="settings-page-left-aside">
+
+        <div id="settings-page-profile-container" class="container">
+            <div id="settings-page-profile-banner-container">
+                <img id="settings-page-profile-banner" ng-src="{{userInSettings.headerPicture || images/default/default_profile_icon.png}}" alt="">
+            </div>
+
+            <img id="settings-page-profile-icon" ng-src="{{userInSettings.profilePicture || 'images/default/default_header_image.png'}}" alt="">
+
+            <div id="settings-page-profile-details">
+                <p id="settings-page-user-name">{{userInSettings.name}}</p>
+                <p id="settings-page-user-username">@{{userInSettings.username}}</p>
+            </div>
+        </div>
+
+        <ul id="settings-page-options-container" class="container">
+            <li ng-click="settingsSection = 1; hasResponse = false" ng-class="(settingsSection === 1) ? 'settings-page-option settings-page-selected-option' : 'settings-page-option'" id="settings-page-account-option">
+                Account
+                <img class="settings-page-right-arrow-icon" src="images/icons/right_arrow_icon.png" alt="">
+            </li>
+            <li ng-click="settingsSection = 2; hasResponse = false" ng-class="(settingsSection === 2) ? 'settings-page-option settings-page-selected-option' : 'settings-page-option'" id="settings-page-password-option">
+                Password
+                <img class="settings-page-right-arrow-icon" src="images/icons/right_arrow_icon.png" alt="">
+            </li>
+        </ul>
+
+        <foot id="settings-page-footer"></foot>
+    </aside>
+
+    <div id="settings-main-content-container" class="container">
+        <div ng-show="settingsSection === 1" id="settings-account-main">
+            <h1>Account</h1>
+            <hr>
+            <form name="profileChanges" id="account-form">
+                <table id="account-form-table">
+                    <tbody>
+                        <tr>
+                            <td class="account-field-name">Name </td>
+                            <td class="account-field-content">
+                                <input type="text" name="name" ng-model="userInSettings.name" id="account-name" value="{{userInSettings.name}}" maxlength="20">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Username </td>
+                            <td class="account-field-content">
+                                <input type="text" name="username" ng-model="userInSettings.username" id="account-username" value="{{userInSettings.username}}" maxlength="20">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Bio </td>
+                            <td class="account-field-content">
+                                <textarea name="bio" ng-model="userInSettings.description" id="account-bio" value="{{userInSettings.description}}" rows="6" cols="25" maxlength="250"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Email </td>
+                            <td class="account-field-content">
+                                <input type="email" name="email" ng-model="userInSettings.email" id="account-email" value="{{userInSettings.email}}" maxlength="20">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Profile picture </td>
+                            <td class="account-field-content">
+                                <input data-file type="file" name="profilePicture" ng-model="userInSettings.profilePicture" ng-upload-change="upload($event)" id="account-profile-picture" class="inputfile">
+                                <label for="account-profile-picture">Chose a file</label>
+                                <span class="upload-status-span" ng-show="profilePicUploaded">Uploaded</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Profile header </td>
+                            <td class="account-field-content">
+                                <input data-file type="file" name="headerPicture" ng-model="userInSettings.headerPicture" ng-upload-change="upload($event)" id="account-banner" class="inputfile">
+                                <label for="account-banner">Chose a file</label>
+                                <span class="upload-status-span" ng-show="headerPicUploaded">Uploaded</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Location </td>
+                            <td class="account-field-content">
+                                <input type="text" name="location" ng-model="userInSettings.location" id="account-location" value="{{userInSettings.location}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="account-field-name">Website </td>
+                            <td class="account-field-content">
+                                <input type="url" name="web" ng-model="userInSettings.website" id="account-web" value="{{userInSettings.website}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="response-account-container" ng-hide="!hasResponse" ng-class="hasError ? 'password-has-error' : 'password-success'">{{response}}</p>
+                <input type="submit" value="Save Changes" ng-click="saveProfileChanges()" id="settings-account-submit-btn">
+            </form>
+
+        </div>
+
+        <div ng-show="settingsSection === 2" id="settings-password-main">
+                <h1>Password</h1>
+                <hr>
+
+                <form name="passwordChanges" id="password-form">
+                        <table id="password-form-table">
+                            <tbody>
+                                <tr>
+                                    <td class="account-field-name">Current password </td>
+                                    <td class="account-field-content">
+                                        <input type="password" name="oldpassword" ng-model="passwordChange.current" id="old-password" value="passwordChange.current" minlength="6">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="account-field-name">New password </td>
+                                    <td class="account-field-content">
+                                        <input type="password" name="newpassword" ng-model="passwordChange.new"  id="new-password" value="passwordChange.new" minlength="6">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="account-field-name">Verify password </td>
+                                    <td class="account-field-content">
+                                        <input type="password" name="verifypassword" ng-model="passwordChange.newRepeat"  id="verify-password" value="passwordChange.newRepeat" minlength="6">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p id="response-password-container" ng-hide="!hasResponse" ng-class="hasError ? 'password-has-error' : 'password-success'">{{response}}</p>
+                        <input type="submit" ng-click="changePass()" value="Save Changes" id="settings-password-submit-btn">
+                    </form>
+        </div>
+    </div>
+</div>

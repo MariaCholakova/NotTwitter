@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Twitter</title>
+
+  <!-- firebase cloud storage -->
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-storage.js"></script>
+
+
+  <!-- angular -->
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-route/angular-route.min.js"></script>
+  <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="vendor/angular-tooltips/dist/angular-tooltips.min.js"></script>
+
+  <!-- bootstrap -->
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!--   <script src="vendor/infiniteScroll/ng-infinite-scroll.min.js"></script> -->
+  <script src="vendor/jqlite/jqlite.min.js"></script>
+
+
+  <!--  Angular Routing -->
+  <script src="js/routing.js"></script>
+
+
+  <!--  services -->
+  <script src='js/userService.js'></script>
+  <script src='js/posts/postsService.js'></script>
+  <script src='js/trends/trendsService.js'></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <!-- directives  -->
+  <script src='directives/profile/profileDirective.js'></script>
+  <script src='directives/trends/trendsDirective.js'></script>
+  <script src='directives/follow/followDirective.js'></script>
+  <script src='directives/footer/footerDirective.js'></script>
+  <script src='directives/newPost/newPostDirective.js'></script>
+  <script src='directives/post/postDirective.js'></script>
+  <script src='directives/likes/likesDirective.js'></script>
+  <script src='directives/user/userDirective.js'></script>
+  <script src='directives/reply/replyDirective.js'></script>
+  <script src="directives/upload-files/uploadFile.js"></script>
+
+
+  <!--controllers -->
+  <script src="js/mainController.js"></script>
+  <script src="js/posts/postController.js"></script>
+  <script src="js/profile/profileController.js"></script>
+  <script src="js/settings/settingsController.js"></script>
+  <script src="js/hashtag/hashtagController.js"></script>
+  <script src="js/trends/trendsController.js"></script>
+  <script src="js/follow/followController.js"></script>
+  <script src="js/footerPages/footerController.js"></script>
+  <script src="js/chat.js"></script>
+  <!-- css -->
+  <link rel="shortcut icon" href="./images/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./stylesheets/reset.css">
+  <link rel="stylesheet" href="./stylesheets/fonts.css">
+  <link rel="stylesheet" href="./stylesheets/header.css">
+  <link rel="stylesheet" href="./stylesheets/homeAndNotifications.css">
+  <link rel="stylesheet" href="./stylesheets/profile.css">
+  <link rel="stylesheet" href="./stylesheets/hashtag.css">
+  <link rel="stylesheet" href="./stylesheets/settings.css">
+  <link rel="stylesheet" href="./stylesheets/newPostDirective.css">
+  <link rel="stylesheet" href="./stylesheets/postDirective.css">
+  <link rel="stylesheet" href="./stylesheets/modal.css">
+  <link rel="stylesheet" href="./stylesheets/footer.css">
+  <link rel="stylesheet" href="vendor/angular-tooltips/dist/angular-tooltips.min.css">
+
+
+</head>
+
+<body ng-app="mainApp" ng-cloak ng-controller='mainAppController'>
+  <header class='greyBorder'>
+    <div>
+      <nav id="mainNav">
+        <ul>
+          <li ng-controller="postController">
+            <a href="#!/" class='grey' ng-click="loadPosts()">
+              <img src="images/home/icons/home.png">
+              <span>Home</span>
+            </a>
+          </li>
+          <li data-toggle="modal" data-target="#messageModal">
+            <a class="grey">
+              <img src="images/home/icons/messages.png">
+              <span>Messages</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="#!/" id='logo'>
+        <img src="images/home/icons/logo.png">
+      </a>
+
+      <nav id="rightNav">
+        <ul>
+          <li>
+            <input type="text" class='greyBorder' id='search' ng-model='search' placeholder="Search Twitter" ng-click="loadUsers($event)"
+              maxlength="100" ng-style="hidden">
+            <input type="text" class='greyBorder' id='hiddenSearch' ng-model='search' placeholder="Search Twitter" ng-click="loadUsers($event)"
+              maxlength="100" ng-show='toggleSearch'>
+            <img src="/images/icons/search.png" id="searchIcon" ng-click="toggleSearch=!toggleSearch">
+            <ul ng-if='search || hiddenSearch' class="search-wrapper">
+              <li ng-repeat="user in users | filter : {name:search}">
+                <a href="#!profile/{{user.username}}" ng-click="closeSearch()">
+                  <img class="greyBorder" ng-src="{{user.profilePicture}}" ng-controller="postController">
+                  <span>{{user.name}}</span>
+                  <span>@{{user.username}}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="profile-wrapper">
+            <a ng-click="toggleMenu($event)">
+              <img ng-src="/images/icons/profile.png" class='greyBorder' title="Profile and settings">
+            </a>
+            <ul ng-show="menuOpened" id="profileMenu">
+              <li>
+                <a href="#!profile/{{userInSession.username}}">
+                  <h1>{{userInSession.name}}</h1>
+                  <h2>@{{userInSession.username}}</h2>
+                </a>
+              </li>
+              <li>
+                <a href="#!profile/{{userInSession.username}}">Profile</a>
+              </li>
+              <li>
+                <a href="#!settings">Settings and Privacy</a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button class='filledButton' id="tweet" data-toggle="modal" data-target="#tweetModal">Tweet</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <div ng-controller="postController" id="post-controller-div">
+    <main ng-view>
+    </main>
+  
+    <!--  retweet modal -->
+    <div class="modal fade" id="retweetModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" class="retweet-modal-label">Retweet this to your followers?</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class='retweet-input'>
+            <input ng-model="reply" type="text" placeholder="Add a comment..." maxlength="150">
+          </div>
+          <post></post>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary filledButton" ng-click="retweet(post)">Retweet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- reply modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" class="retweet-modal-label">Reply to {{post.userName}}</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <post></post>
+          <div>
+            <newpost></newpost>
+            <button type="button" class="btn btn-primary filledButton replyButton" ng-click="replyPost(post)" ng-class={disabled:!tweetText}>Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Compose a tweet</h1>
+          </div>
+          <div>
+            <newpost></newpost>
+            <button type="button" class="btn btn-primary filledButton replyButton" ng-click="addPost(tweetText); tweetText='';" ng-class={disabled:!tweetText}>Tweet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <post></post>
+          <div class='modal-spans'>
+            <span>{{posted}}</span>
+            <br>
+            <span ng-click="showRetweets(post)">
+              <span>{{post.retweets.length}}</span> Retweets</span>
+            <span ng-click="showLikes(post)">
+              <span>{{post.likes.length}}</span> Likes</span>
+          </div>
+
+          <div ng-show="likes">
+            <h1 class='blueHeader'>Liked {{post.likes.length}} times</h1>
+            <ol>
+              <li ng-repeat="user in postUserLikes">
+                <like></like>
+              </li>
+            </ol>
+          </div>
+
+          <div ng-show="retweets">
+            <h1 class='blueHeader'>Retweeted {{post.retweets.length}} times</h1>
+            <ol>
+              <li ng-repeat="post in retweetedPosts">
+                <post></post>
+              </li>
+            </ol>
+          </div>
+          <div class='retweet-input'>
+            <input type="text" placeholder="Tweet your reply..." ng-model="tweetText" maxlength="150" id="postInfoInput">
+            <button ng-click="replyPost(post)" class="filledButton">Reply</button>
+          </div>
+          <ol>
+            <li ng-repeat="reply in replies">
+              <reply></reply>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- message modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+           
+            <h1 class="modal-title" class="retweet-modal-label">Dirrect messages</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <section>
+            <div id="change_username">
+        <input id="username" type="text" />
+        <button id="send_username" type="button">Change username</button>
+            </div>
+          </section>
+    
+          <section id="chatroom">
+            <section id="feedback"></section>
+          </section>
+    
+          
+    
+          <section id="input_zone"> 
+            <input id="message" class="vertical-align" type="text" />
+            <button id="send_message" class="vertical-align" type="button">Send</button>
+          </section>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--  picture detail modal -->
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog image-modal-dialog">
+        <div class="modal-content image-modal-container">
+          <img class="expanded-image" ng-src="{{galleryPic}}" ng-click="openImageNewTab(galleryPic)">
+          <img src="images/icons/delete-icon.png" data-toggle="modal" data-target="#image-modal" class="delete-image" ng-click="deleteImage(galleryPic)"
+            tooltips tooltip-side="top" tooltip-template="Delete image" />
+          <img>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

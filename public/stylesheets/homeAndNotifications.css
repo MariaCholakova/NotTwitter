@@ -1,0 +1,655 @@
+main{
+  height: 100%;
+}
+
+
+.container{
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(117,117,117,0.3);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(117,117,117,0.3);
+  box-shadow: 0px 0px 2px 0px rgba(117,117,117,0.3);
+}
+
+/* MAIN CONTENT */
+  .mainDiv, .widerMainDiv, footer, #trendsDiv, #whoToFollow, #profileDiv{
+    border-radius: 15px;
+  }
+
+  .mainDiv, .widerMainDiv{
+    display: inline-block;
+    margin: 0em 0.5em 0em 0.8em;
+    width: 50%;
+    height: auto;
+    background-color: white;
+  }
+
+  .widerMainDiv{
+    margin: 0em 0em 0em 0.8em;
+    width: 74%;
+  }
+
+  .mainContent{
+    width: 82%;
+    margin:5em auto;
+    margin-top: 1em;
+    height: auto;
+    padding-top: 2em;
+  }
+
+  /* Asides */
+
+  .rightAside a>span:hover, .leftAside a>h2:hover{
+    text-decoration: underline;
+  }
+
+  aside {
+    width: 24%;
+    height: 200px;
+    text-align: center;
+  }
+  
+  aside h1{
+    font-weight: bolder;
+    font-size:1.2em;
+  }
+  
+  aside h1, aside a{
+    display: inline-block;
+    padding: 0.3em 0.3em 0em 0em;
+  }
+  
+  .rightAside{
+    float:right;
+    height: auto;
+  }
+  
+  .rightAside section{
+    width: 100%;
+    background-color: white;
+    height: 67%; 
+    padding: 1em;
+  }
+  
+  .leftAside{
+    float: left;
+    height: auto;
+    margin-bottom: 1em;
+  }
+  
+  #profileDiv, #trendsDiv{
+    display: block;
+    background-color:white;
+  }
+  
+  
+  #profileDiv{
+    height: 31%;
+    margin: 0em 0em 1em 0em;
+  }
+  
+  #profileDiv img{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  #profileDiv img:last-of-type{
+    width: 27%;
+    height: 72px;
+    border-radius: 50%;
+    position: relative;
+    top: -34px;
+    left: -26px;
+    border: 3px solid white;
+  }
+  
+  #profileDiv div:first-of-type{
+    position: relative;
+    left: -27px;
+    top: -37px;
+    text-align: left;
+  }
+  
+  #profileDiv span{
+    font-size:20px;
+  }
+
+  #profileDiv div a{
+    padding:0.1em;
+  }
+  
+  #profileDiv div{
+    display: inline-block;
+  }
+  
+  #profileDiv div:last-of-type{
+    display: inline-block;
+    position: relative;
+    top: -26px;
+  }
+  
+  #profileDiv td{
+    padding: 0em 2.6em 0em 0em;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  #profileDiv tr:first-of-type>td{
+    font-size:12px;
+  }
+  
+  #profileDiv tr:first-of-type>td:hover{
+    color:#1da1f2; 
+  }
+  
+  #profileDiv tr:last-of-type>td{
+    font-size: 20px;
+    padding: 0em 0.2em;
+  }
+  
+  #trendsDiv{
+    background-color: white;
+    height: auto;
+    font-weight: bold;
+    text-align: left;
+    padding:1em;
+  }
+  
+
+  #empty-posts{
+    width: 100%;
+    padding: 5em;
+  }
+
+  #empty-posts h1{
+    font-weight: bold;
+    font-size: 1.7em;
+    margin-bottom: 0.5em;
+  }
+
+  #tagPhotos{
+    text-align: center;
+    font-size: 1.5em;
+    height: 154px;
+    padding-top: 3em;
+    font-weight: bold;
+    color: gray;
+  }
+
+  #trendsDiv ul, #whoToFollow ul{
+    height: 100%;
+    overflow: auto;
+  }
+  
+  #trendsDiv li{
+    margin:0em 0em 0.1em 0em;
+    padding: 0.2em 0em 0em 0em;
+    height: auto;
+  }
+  
+  #trendsDiv span{
+    color:#657786;
+    font-size:0.9em;
+    font-weight: 100;
+  }
+  
+  #whoToFollow li{
+    margin: 1em 0.4em 0.1em 0.4em;
+    padding: 0.7em 0em 0em 0em;
+    height: 27%;
+    text-align: left;
+    border-bottom: 1px solid #D8D8D8;
+  }
+   
+  #whoToFollow img:last-of-type{
+    width: 26px;
+  }
+
+  #whoToFollow{
+    height:auto;
+  }
+  
+  #whoToFollow a>img:first-of-type{
+    border-radius: 50%;
+    position: relative;
+    top:8px;
+    left:0px;
+    width: 25%;
+    height: 88%;
+    object-fit: cover;
+  }
+  
+  #whoToFollow li>div{
+    position: relative;
+    top: -21px;
+    left: 3px;
+    line-height: 1.7em;
+    height: 100%;
+  }
+  
+  #whoToFollow button{
+    position: relative;
+    left: 69px;
+    top: -36px;
+  }
+  
+  #whoToFollow div{
+    display: inline;
+    position: relative;
+    left: 9px;
+    top: -40px;
+  }
+  #whoToFollow ul a{
+    font-weight: bold;
+    color:black;
+    height: 100%;
+  }
+  
+  #whoToFollow div>span{
+    color: rgba(152,152,152,0.5);
+    font-size: 12px;
+    float: right;
+    position: relative;
+    top: -46px;
+    left: -3%;
+    cursor: pointer;
+  }
+  #whoToFollow div>span:hover{
+    color:#1da1f2;
+    font-size:16px;
+  }
+  
+  
+ /*  footer */
+
+ footer{
+  width: 100%;
+  height: 30%;
+  margin:1em 0em;
+  background-color:white;
+  padding: 1em;
+  text-align: left;
+}
+
+footer a, footer p{
+  font-size:0.9em;
+  font-weight: 100;
+  color: rgba(27, 26, 26, 0.6);
+  padding:0.3em;
+}
+  
+  footer ul{
+    display: inline-block;
+    height: 50%;
+    margin: 1em 1em 2em 0em;
+  }
+  
+  footer a:hover{
+    text-decoration: underline;
+    color:#1da1f2;
+  }
+  
+ 
+  .liked{
+    color:#e0245e;
+  }
+
+
+  .expand{
+    width: 70%;
+  }
+
+  @media all and (max-width:1170px){
+
+    #rightNav>ul>li:first-of-type {
+      width: 38% !important;
+  }
+    .rightAside{
+      float: left;
+      clear: left;
+  
+    }
+
+    aside{
+      width: 30%;
+    }
+
+    .mainDiv{
+      width: 67%;
+    }
+
+    .mainContent{
+      margin: 5em 7.5em;
+      margin-top: 1em;
+      padding-top: 2em;  
+    }
+   
+    
+    
+  }
+
+
+  @media all and (max-width: 950px) {
+   .mainContent{
+    width: 100%;
+    margin: 5em 1.2em;
+    margin-top: 1em;
+    padding-top: 2em;
+   }
+
+   .mainDiv{
+    width: 62%;
+   }
+
+   aside {
+     width:31%;
+   }
+
+   .mainContent{
+    width: 100%;
+    margin: 5em 2em;
+    margin-top: 1em;
+    padding-top: 2em;
+   }
+
+   header>div{
+     padding:0em 3%;
+   }
+
+
+   div>#hashtagHeader h1 {
+    padding: 2.5% 4%;
+}
+
+div>#hashtagHeader ul {
+  margin: 0% 2%;
+}
+
+   #search{
+     width:100%
+   }
+
+  
+}
+
+@media all and (max-width: 770px) {
+  #logo{
+    left: 5%;
+  }
+
+  
+}
+
+@media all and (max-width: 700px) {
+
+  #profileDiv{
+    height: 216px;
+  }
+  aside, .mainDiv {
+    width: 93%;
+    padding: 1em;
+  }
+  .mainDiv{
+    margin: 0;
+  }
+
+  .mainContent{
+    font-size: 1.2em;
+    width: 96%;
+    /* margin: 3em 1em; */
+    margin: 0;
+    padding-top: 2em;
+  }
+
+  #whoToFollow, footer{
+    width: 48%;
+    display: inline-block;
+  }
+
+
+  #whoToFollow{
+    float: left;
+  }
+
+  footer{
+    float: right;
+    margin: 0em 0em 0em 1em;
+  }
+
+  #profileDiv div:first-of-type{
+    left: -27px;
+    top: -90px;
+  }
+
+  #profileDiv img:last-of-type{
+    width: 24%;
+    height: 140px;
+    top: -75px;
+    left: -5%;
+  }
+
+  #profileDiv div:last-of-type{
+   top:-87px;
+   left:28px
+  }
+
+  #profileDiv div a{
+    font-size:1.2em;
+  }
+
+  #rightNav ul li button{
+    width: 68px;
+  }
+
+  
+
+}
+
+
+@media all and (max-width: 600px) {
+  #mainNav ul li span{
+    display:none;
+  }
+
+  #mainNav img{
+    top: 0px;
+    height: 39px;
+  }
+
+  #rightNav{
+    width: 60%;
+  }
+#mainNav{
+  width: 23%;
+}
+#logo{
+  left: 8%;
+}
+
+.posts-action-list li {
+  margin: 1em 1em 1em 0em !important;
+}
+.posts-frame-content div {
+  margin-left: -5em;
+}
+
+#profileDiv img:last-of-type {
+  width: 28%;
+  height: 127px;
+}
+
+#whoToFollow div>span {
+  top: -74px;
+}
+#whoToFollow div {
+  top: -26px;
+}
+
+#whoToFollow button {
+  left: 60px;
+  height: 28px;
+  top: -29px;
+}
+
+.search-wrapper {
+  width: 48%;
+}
+
+
+}
+
+
+@media all and (max-width: 520px) {
+  #search, #logo{
+    display: none;
+  }
+
+  #searchIcon{
+    display: inline;
+  }
+
+  #mainNav{
+    width:39%;
+  }
+
+  #rightNav{
+    width:59%;
+  }
+  .posts-user-photo{
+    width: 13%;
+      height: 42px !important ;
+  }
+
+  #rightNav ul li button{
+    width: 45px;
+    font-size:11px
+  }
+
+  nav>ul{
+    width: 100%;
+  }
+
+  .profile-wrapper ul{
+    width: 90%;
+    left: 8%;
+  }
+  
+nav>ul>li {
+  padding: 0.2em 1em;
+}
+
+#whoToFollow, footer{
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+.search-wrapper {
+  width: 90%;
+  position: absolute;
+  left: 23px;
+  top: 96px;
+  border-top: none;
+}
+.posts-action-list li {
+font-size: 0.9em;
+margin: 1em 0.2em 1em !important;
+}
+
+
+#profileDiv img:last-of-type{
+  width: 39%;
+  height: 141px;
+  top: -74px;
+  left: -4%;
+}
+
+#whoToFollow button {
+  left: 114px !important;
+  top: -51px;
+}
+
+#whoToFollow div {
+  top: -54px;
+  left: 37px;
+}
+
+#profileDiv div:last-of-type{
+top: -63px;
+left: 28px;
+}
+
+#profileDiv{
+  height: 263px;
+}
+
+#hashtagHeader ul>li{
+  width: 18%;
+  padding: 1em;
+}
+#whoToFollow button{
+  left:-87px;
+}
+
+div .postSection #profilePic{
+  width: 9%;
+  position: relative;
+  height: 29%;
+  top: 15px;
+}
+
+aside, .mainDiv{
+  width: 99%;
+}
+
+.posts-frame-content div{
+  margin-left: -6em;
+}
+
+#whoToFollow button{
+  left: 88px;
+}
+
+.upload{
+  position: relative;
+  width: 35px !important;
+  top: -5px;
+  left: -27px;
+
+}
+
+section.postSection ul:last-child button {
+  position: relative;
+  left: 19px;
+}
+#hashtagHeader div:first-child {
+  height:48px;}
+
+
+  .modal-content .modal-header #backButton {
+    margin-left: 2em;
+    margin-right: 0.5em;
+}
+
+.send-message-div input {
+
+  margin-left: 2.5em !important;
+  margin-top: 1em !important;
+}
+    
+
+  .message-container div {
+    padding: 0.1em 1em 0em 1.5em !important;}
+
+    .send-message-div input {
+      width: 73% !important;}
+
+#messageModal h2 {
+  margin: 3em 1em 0em;}
+}
+#chatroom{
+  height:300px;
+  width:100%;
+  background:cornsilk;
+}
