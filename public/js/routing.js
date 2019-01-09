@@ -5,6 +5,9 @@ mainApp.config(function($routeProvider) {
    .when("/", {
         templateUrl : "js/home/home.htm",
     }) 
+    .when("/login", {
+        templateUrl : "js/login/login.htm",
+    }) 
     .when("/profile/:username", {
         templateUrl : "js/profile/profile.htm",
     })
